@@ -1,29 +1,12 @@
 .container {
-  display: grid;
   margin-left: 15%;
   margin-right: 15%;
   padding-top: 30px;
-  grid-template-columns: max-content;
 }
 
-.logo {
-  grid-column: 1;
-}
 
-.navbar {
-  grid-column: 2;
-  display: grid;
-  grid-template-columns: repeat(6, auto);
-}
-
-.navbar li {
-  text-align: right;
-  text-transform: uppercase;
-  list-style: none;
-}
-
-.navbar li a {
+.nav-link {
   text-decoration: none;
-  color: #497e57;
+  color: #333333;
   font-weight: bold;
 }
