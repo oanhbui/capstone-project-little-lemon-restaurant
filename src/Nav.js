@@ -2,8 +2,6 @@ import Logo from './icons_assets/Logo.svg';
 import {
     Box,
     Flex,
-    Avatar,
-    HStack,
     Link,
     IconButton,
     useDisclosure,
@@ -15,8 +13,9 @@ import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 
 const Links = ['Home', 'About', 'Menu', 'Reservations', 'Order Online', 'Login'];
 
-const NavLink = ({ children }) => (
+const NavLink = ({ children, className, }) => (
     <Link
+        className={className}
         px={2}
         py={1}
         rounded={'md'}
@@ -25,7 +24,7 @@ const NavLink = ({ children }) => (
             bg: useColorModeValue('gray.200', 'gray.700'),
         }}
         href={'#'}>
-        {children}
+            {children}
     </Link>
 );
 
@@ -35,7 +34,7 @@ function Nav() {
         <Box className="container">
             <Flex h={16} alignItems={'center'} w="full" justifyContent={'space-between'}>
                     <Box marginRight={20}>
-                        <img src={Logo} />
+                        <img src={Logo} width="250"/>
                     </Box>
                     <Spacer />
                     <Flex
@@ -64,7 +63,7 @@ function Nav() {
                 <Box pb={4} display={{ md: 'none' }}>
                     <Stack as={'nav'} spacing={4}>
                         {Links.map((link) => (
-                            <NavLink key={link}>{link}</NavLink>
+                            <NavLink a="b" className="nav-link" key={link}>{link}</NavLink>
                         ))}
                     </Stack>
                 </Box>
