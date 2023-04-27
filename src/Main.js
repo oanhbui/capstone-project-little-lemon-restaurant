@@ -169,7 +169,7 @@ function Main() {
                             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. 
                         </Text>
                     </Box>
-                    <Box position="relative" height="150%" width="75%">
+                    <Box position="relative" height="300px" width="300px">
                         <Image src={adriAndMariA} position="absolute" left="0" bottom="0" width="60%" zIndex="2"/>
                         <Image src={adriAndMariB} position="absolute" top="0" right="0" width="60%" zIndex="1" />
                     </Box>

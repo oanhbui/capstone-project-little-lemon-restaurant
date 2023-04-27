@@ -16,3 +16,11 @@ header {
   margin-top: 30px;
   padding-top: 20px
 }
+
+footer {
+  background-color: #495e57;
+  margin-top: 100px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  color: white;
+}
