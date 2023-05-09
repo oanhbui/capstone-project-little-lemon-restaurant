@@ -15,18 +15,22 @@ import {
     Select,
     Text
   } from '@chakra-ui/react';
+import { ACTIONS } from "./constants";
 
 
-function ReserveTable() {
+function ReserveTable({availableTimes, dispatch}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const selectTime = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
 
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [guests, setGuests] = useState(1);
     const [occasion, setOccasion] = useState("");
-
+    
+    const handleBooking = () => {
+      console.log(time);
+      dispatch({ type: ACTIONS.BOOKING_TIME, time });
+    }
 
     return (
       <>
@@ -48,7 +52,7 @@ function ReserveTable() {
               <FormControl mt={4}>
                 <FormLabel for="res-time">Choose time</FormLabel>
                 <Select id="res-time" value={time} onChange={e => setTime(e.target.value)}>
-                  {selectTime.map(time => <option>{time}</option>)}
+                  {availableTimes.map(time => <option>{time}</option>)}
                 </Select>
               </FormControl>
               <FormControl mt={4}>
@@ -62,14 +66,10 @@ function ReserveTable() {
                   <option>Anniversary</option>
                 </Select>
               </FormControl>
-              <Text>{date}</Text>
-              <Text>{time}</Text>
-              <Text>{guests}</Text>
-              <Text>{occasion}</Text>
             </ModalBody>
 
             <ModalFooter>
-              <Button type="submit" bg='#F4CE14' color="black" mr={3}>
+              <Button type="submit" bg='#F4CE14' color="black" mr={3} onClick={handleBooking}>
                 Make Your Reservation
               </Button>
               <Button onClick={onClose} color="black">Cancel</Button>

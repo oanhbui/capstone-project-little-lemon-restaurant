@@ -3,13 +3,12 @@ import {
     Flex,
     Spacer,
     Text,
-    Button,
     Image
 } from '@chakra-ui/react';
 import HeaderImage from "./icons_assets/restauranfood.jpg";
 import ReserveTable from './ReserveTableModal';
 
-function Header() {
+function Header({availableTimes, dispatch}) {
     return (
         <header>
             <Box className="container">
@@ -18,7 +17,7 @@ function Header() {
                         <Text fontSize="40pt" color="#F4CE14" lineHeight="1">Little Lemon</Text>
                         <Text fontSize="20pt" color="white" lineHeight="1">Chicago</Text>
                         <Text color="white" paddingTop="10px" paddingBottom="10px">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist</Text>
-                        <ReserveTable />
+                        <ReserveTable availableTimes={availableTimes} dispatch={dispatch}/>
                     </Box>
                     <Spacer />
                     <Box height={1} paddingTop={5}>
