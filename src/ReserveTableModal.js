@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect } from "react";
 import {
     Modal,
     ModalOverlay,
@@ -12,8 +12,7 @@ import {
     FormLabel,
     Input,
     useDisclosure,
-    Select,
-    Text
+    Select
   } from '@chakra-ui/react';
 import { ACTIONS } from "./constants";
 
@@ -26,10 +25,18 @@ function ReserveTable({availableTimes, dispatch}) {
     const [time, setTime] = useState("");
     const [guests, setGuests] = useState(1);
     const [occasion, setOccasion] = useState("");
-    
+
+    useEffect(() => {
+      let timeSlots = fetchAPI(new Date(date));
+      const action = {type: ACTIONS.SET_TIME_SLOT, availableTimes: timeSlots}
+      dispatch(action)
+    }, [date])
+  
+
     const handleBooking = () => {
-      console.log(time);
-      dispatch({ type: ACTIONS.BOOKING_TIME, time });
+      const action = { type: ACTIONS.BOOKING_TIME, time: time }
+      submitAPI();
+      dispatch(action);
     }
 
     return (
@@ -46,21 +53,21 @@ function ReserveTable({availableTimes, dispatch}) {
             <ModalCloseButton />
             <ModalBody pb={6}>
               <FormControl>
-                <FormLabel for="res-date">Choose date</FormLabel>
+                <FormLabel htmlFor="res-date">Choose date</FormLabel>
                 <Input type="date" id="res-date" value={date} onChange={e => setDate(e.target.value)} />
               </FormControl>
               <FormControl mt={4}>
-                <FormLabel for="res-time">Choose time</FormLabel>
-                <Select id="res-time" value={time} onChange={e => setTime(e.target.value)}>
-                  {availableTimes.map(time => <option>{time}</option>)}
+                <FormLabel htmlFor="res-time">Choose time</FormLabel>
+                <Select id="res-time" data-testid="res-time" value={time} onChange={e => setTime(e.target.value)}>
+                  {availableTimes.map(time => <option key={time}>{time}</option>)}
                 </Select>
               </FormControl>
               <FormControl mt={4}>
-                <FormLabel for="guests">Number of guests</FormLabel>
+                <FormLabel htmlFor="guests">Number of guests</FormLabel>
                 <Input type="number" id="guests" placeholder="1" min="1" max="10" value={guests} onChange={e => setGuests(e.target.value)} />
               </FormControl>
               <FormControl mt={4}>
-                <FormLabel for="occasion">Occasion</FormLabel>
+                <FormLabel htmlFor="occasion">Occasion</FormLabel>
                 <Select id="occasion" value={occasion} onChange={e => setOccasion(e.target.value)}>
                   <option>Birthday</option>
                   <option>Anniversary</option>
