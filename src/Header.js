@@ -8,7 +8,7 @@ import {
 import HeaderImage from "./icons_assets/restauranfood.jpg";
 import ReserveTable from './ReserveTableModal';
 
-function Header({availableTimes, dispatch}) {
+function Header({availableTimes, dispatch, setBookingDetails}) {
     return (
         <header>
             <Box className="container">
@@ -17,7 +17,7 @@ function Header({availableTimes, dispatch}) {
                         <Text fontSize="40pt" color="#F4CE14" lineHeight="1">Little Lemon</Text>
                         <Text fontSize="20pt" color="white" lineHeight="1">Chicago</Text>
                         <Text color="white" paddingTop="10px" paddingBottom="10px">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist</Text>
-                        <ReserveTable availableTimes={availableTimes} dispatch={dispatch}/>
+                        <ReserveTable availableTimes={availableTimes} dispatch={dispatch} setBookingDetails={setBookingDetails}/>
                     </Box>
                     <Spacer />
                     <Box height={1} paddingTop={5}>

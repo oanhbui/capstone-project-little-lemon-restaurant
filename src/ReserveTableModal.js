@@ -15,29 +15,33 @@ import {
     Select
   } from '@chakra-ui/react';
 import { ACTIONS } from "./constants";
+import { useNavigate } from "react-router-dom";
 
-
-function ReserveTable({availableTimes, dispatch}) {
+function ReserveTable({availableTimes, dispatch, setBookingDetails}) {
     const { isOpen, onOpen, onClose } = useDisclosure();
-
-
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [guests, setGuests] = useState(1);
     const [occasion, setOccasion] = useState("");
+    const navigate = useNavigate();
+
+
 
     useEffect(() => {
       let timeSlots = fetchAPI(new Date(date));
       const action = {type: ACTIONS.SET_TIME_SLOT, availableTimes: timeSlots}
       dispatch(action)
-    }, [date])
+    }, [date]);
   
 
     const handleBooking = () => {
       const action = { type: ACTIONS.BOOKING_TIME, time: time }
       submitAPI();
       dispatch(action);
-    }
+      setBookingDetails({date, time, guests, occasion});
+      onClose();
+      navigate("/confirm-booking")
+    };
 
     return (
       <>
