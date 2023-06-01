@@ -1,17 +1,22 @@
 import React from "react";
+import {
+    Text,
+    Box
+    
+} from '@chakra-ui/react';
 
 const ConfirmedBooking = ({bookingDetails}) => {
     console.log(bookingDetails);
     return (
-        <div>
-            <h1>Your booking has been confirmed!</h1>
-            <div>
-                <p>Date: {bookingDetails.date}</p>
-                <p>Time: {bookingDetails.time} </p>
-                <p>Guest number: {bookingDetails.guests}</p>
-                <p>Occasion: {bookingDetails.occasion}</p>
-            </div>
-        </div>                                                                               
+        <Box className="container" mt="60px">
+            <Text fontSize="30">Your booking has been confirmed!</Text>
+            <Box mt="20px">
+                <Text>Date: {bookingDetails.date}</Text>
+                <Text>Time: {bookingDetails.time} </Text>
+                <Text>Guest number: {bookingDetails.guests}</Text>
+                <Text>Occasion: {bookingDetails.occasion}</Text>
+            </Box>
+        </Box>                                                                               
     )
 };
 
