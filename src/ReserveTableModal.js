@@ -43,7 +43,7 @@ function ReserveTable({availableTimes, dispatch, setBookingDetails}) {
         setGuests((current) => ({...current, error: "Please reserve for at least 1 guest"}))
       }
     }
-  
+
     const dateValidation = (e) => {
       const todayDate = new Date();
       if (!date.value) {
@@ -100,8 +100,8 @@ function ReserveTable({availableTimes, dispatch, setBookingDetails}) {
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel htmlFor="guests">Number of guests</FormLabel>
-                <Input type="number" id="guests" placeholder="Enter number of guests" min="1" max="10" value={guests.value} onChange={e => setGuests({value: e.target.value})} onBlur={guestValidation} />
-                {guests.error ? <Text color="red">{guests.error}</Text> : null}
+                <Input type="number" data-testid="guests" id="guests" placeholder="Enter number of guests" min="1" max="10" value={guests.value} onChange={e => setGuests({value: e.target.value})} onBlur={guestValidation} />
+                {guests.error ? <Text color="red" data-testid="guest-error-message">{guests.error}</Text> : null}
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel htmlFor="occasion">Occasion</FormLabel>
